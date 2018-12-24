@@ -16,10 +16,10 @@ Store images in a local directory. (Bonus)
 
 If the id or recommendation is expired return expired.
 
-# Notes 
-Use you normal git workflow except on the initial commit add an estimate of how long it will take to complete the exercise. 
+# Notes
+Use you normal git workflow except on the initial commit add an estimate of how long it will take to complete the exercise.
 
-For example git commit -m "Initial commit 3 hours" 
+For example git commit -m "Initial commit 3 hours"
 
 # Confirmation
 API endpoint that returns a User, medical recommendation, and id.
@@ -38,3 +38,29 @@ Image uploads is a stretch goal
 Deploy the application
 
 Create a frontend
+=======
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
