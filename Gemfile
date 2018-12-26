@@ -11,7 +11,7 @@ gem 'turbolinks', '~> 5'
 gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'fast_jsonapi'
+gem 'jbuilder', '~> 2.8'
 
 group :development, :test do
   gem 'rspec-rails'

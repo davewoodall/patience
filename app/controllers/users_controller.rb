@@ -3,17 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @users, status: :ok }
-    end
+    respond_to :html, :json
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    respond_to :html, :json
   end
 
   def new
@@ -28,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       respond_to do |format|
         format.html
-        format.json { render json: @user, status: :created }
+        format.json { render 'create', status: :created }
       end
     else
       respond_to do |format|
@@ -42,7 +36,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       respond_to do |format|
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render json: @user, status: :ok }
+        format.json
       end
     else
       respond_to do |format|
