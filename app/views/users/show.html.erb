@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+  <div class="image_upload">
+    <% if @image.attached? %>
+      <%= image_tag @image, width: 200 %>
+    <% end %>
+  </div>
+
+
 <p>
   <strong>Name:</strong>
   <%= @user.name %>

@@ -1,0 +1,41 @@
+<%= form_with(model: [@user, @recommendation], url: user_recommendations_path, local: true) do |form| %>
+  <% if recommendation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
+
+      <ul>
+      <% recommendation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issuer %>
+    <%= form.text_field :issuer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiration %>
+    <%= form.date_select :expiration %>
+  </div>
+
+  <div class="field">
+    <%= form.file_field :image_upload %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

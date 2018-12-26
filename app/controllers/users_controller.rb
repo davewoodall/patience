@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @image = recommendation_image
     respond_to :html, :json
   end
 
@@ -18,8 +19,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    user = user_params.except(:recommendation_attributes)
+    @user = User.new(user)
+
     if @user.save
+      if user_params.dig(:recommendation_attributes)
+        @user.recommendations.create(user_params[:recommendation_attributes])
+      end
       respond_to do |format|
         format.html
         format.json { render 'create', status: :created }
@@ -55,11 +61,19 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:name, :email, :dob)
-    end
+  def user_params
+    params.require(:user).permit(
+      :name, :email, :dob,
+      recommendation_attributes: [
+        :number, :issuer, :state, :expiration, :id
+      ])
+  end
+
+  def recommendation_image
+    @user.recommendations.try(:last).try(:image_upload)
+  end
 end
