@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @image = recommendation_image
+    @recommendation = @user.recommendations.last
+    @recommendation_image = recommendation_image
+    @identification = @user.identifications.last
+    @identification_image = identification_image
     respond_to :html, :json
   end
 
@@ -19,15 +22,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = user_params.except(:recommendation_attributes)
+
+    user = user_params.except(:recommendation_attributes, :identification_attributes)
     @user = User.new(user)
 
     if @user.save
       if user_params.dig(:recommendation_attributes)
         @user.recommendations.create(user_params[:recommendation_attributes])
       end
+      if user_params.dig(:identification_attributes)
+        @user.identifications.create(user_params[:identification_attributes])
+      end
       respond_to do |format|
-        format.html
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render 'create', status: :created }
       end
     else
@@ -61,6 +68,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -70,10 +78,17 @@ class UsersController < ApplicationController
       :name, :email, :dob,
       recommendation_attributes: [
         :number, :issuer, :state, :expiration, :id
+      ],
+      identification_attributes: [
+        :number, :state, :expiration, :id
       ])
   end
 
   def recommendation_image
     @user.recommendations.try(:last).try(:image_upload)
+  end
+
+  def identification_image
+    @user.identifications.try(:last).try(:image_upload)
   end
 end

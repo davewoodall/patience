@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
   <div class="image_upload">
-    <% if @image.attached? %>
-      <%= image_tag @image, width: 200 %>
+    <% if @recommendation_image %>
+      <%= image_tag @recommendation_image, width: 200 %>
     <% end %>
   </div>
+
+<div class="image_upload">
+  <% if @identification_image %>
+    <%= image_tag @identification_image, width: 200 %>
+  <% end %>
+</div>
 
 
 <p>

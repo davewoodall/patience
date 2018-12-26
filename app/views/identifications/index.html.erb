@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Identifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Number</th>
+      <th>State</th>
+      <th>Expiration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @identifications.each do |identification| %>
+      <tr>
+        <td><%= identification.user %></td>
+        <td><%= identification.number %></td>
+        <td><%= identification.state %></td>
+        <td><%= identification.expiration %></td>
+        <td><%= link_to 'Show', identification %></td>
+        <td><%= link_to 'Edit', edit_identification_path(identification) %></td>
+        <td><%= link_to 'Destroy', identification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Identification', new_identification_path %>
