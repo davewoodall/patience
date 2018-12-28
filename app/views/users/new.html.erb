@@ -1,15 +1,9 @@
-<section class="hero is-primary is-small">
+<section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">
-        New User
-      </h1>
-      <h2 class="subtitle">
-        Please fill out all information
-      </h2>
+      <h2 class='subtitle is-4 has-text-grey'>New User</h2>
+      <%= render 'users/form/form', user: @user %>
     </div>
   </div>
 </section>
-
-<%= render 'users/form/form', user: @user %>
 

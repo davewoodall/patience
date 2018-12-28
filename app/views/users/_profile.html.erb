@@ -10,5 +10,7 @@
     <strong>Dob:</strong>
     <%= @user.dob %>
   </p>
-<%= link_to 'Edit', edit_user_path(@user) %>
+  <div class="has-text-right">
+    <%= link_to 'Edit', edit_user_path(@user), class: 'button' %>
+  </div>
 </section>

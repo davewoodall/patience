@@ -18,7 +18,7 @@ class RecommendationsController < ApplicationController
 
   def new
     @user = User.find(params[:id])
-    @recommendation = Recommendation.new
+    @recommendation = Recommendation.new(user: @user)
   end
 
   def edit

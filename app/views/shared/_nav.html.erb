@@ -1,17 +1,16 @@
-
-<section class="container">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <h1 class="title">
-        <%= link_to 'patience', '/'%>
-      </h1>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <%= link_to 'users', users_path, class:"navbar-item" %>
+<section class="container is-fluid">
+  <section class="section">
+    <nav class="level" role="navigation" aria-label="main navigation">
+      <div class="level-left">
+        <h1 class="title">
+          <%= link_to 'patience', '/'%>
+        </h1>
       </div>
-    </div>
-  </nav>
-  <%= render 'shared/notice' %>
+      <div class='level-right'>
+
+        <%= link_to 'new user', new_user_path, class:"button has-text-right" %>
+      </div>
+    </nav>
+    <%= render 'shared/notice' %>
+  </section>
 </section>

@@ -18,7 +18,7 @@ class IdentificationsController < ApplicationController
 
   def new
     @user = User.find(params[:id])
-    @identification = Identification.new
+    @identification = Identification.new(user: @user)
   end
 
   def edit

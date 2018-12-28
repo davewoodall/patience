@@ -1,38 +1,19 @@
-<p id="notice"><%= notice %></p>
-
 <section class="container is-fluid">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <h1 class="title">users</h1>
-        <div class="navbar-item">
-          <div class="buttons">
-            <%= link_to 'New User', new_user_path, class: 'button is-primary' %>
-          </div>
-        </div>
-    </div>
-  </nav>
+  <div class="section">
+    <table class='table is-striped is-hoverable is-fullwidth'>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user, class: 'subtitle is-3 has-text-link' %></td>
+          <td></td>
+          <td class='has-text-right'>
+            <%= link_to 'Edit', edit_user_path(user), class: 'has-text-link' %>
+            &nbsp;
+            <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger'  %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </section>
-
-<table class='table is-striped is-hoverable is-fullwidth'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.name, user %></td>
-        <td></td>
-        <td class='has-text-right'>
-          <%= link_to 'Edit', edit_user_path(user), class: 'button' %>
-
-          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

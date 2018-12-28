@@ -24,21 +24,19 @@
     <%= form.label :expiration, class: 'label' %>
     <%= form.date_select :expiration,class: 'control input' %>
   </div>
-
   <div class="field column">
     <%= form.label 'proof', class: 'label' %>
     <%= form.file_field :image_upload %>
   </div>
-
 </div>
 
 <div class="field">
   <% if action_name == 'edit' %>
-  <%= link_to 'Cancel', user_path(@user), class: 'button is-warning' %>
-  <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  <%= link_to 'Cancel', user_path(@recommendation.user_id), class: 'button is-warning' %>
+  <%= link_to 'Delete', recommendation_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
   <%= form.submit 'Save', class:'button is-primary' %>
   <% else %>
-  <%= link_to 'Cancel', user_path(@user), class: 'button is-warning' %>
+  <%= link_to 'Cancel', user_path(@recommendation.user_id), class: 'button is-warning' %>
   <%= form.submit 'Save', class:'button is-primary' %>
   <% end %>
 </div>
