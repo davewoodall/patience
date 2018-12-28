@@ -10,9 +10,17 @@ FactoryBot.define do
       create(:recommendation, user_id: user.id)
     end
   end
+
   trait :with_identification do
     after(:create) do |user|
       create(:identification, user_id: user.id)
+    end
+  end
+
+  trait :all_data do
+    after(:create) do |user|
+      create(:identification, user_id: user.id)
+      create(:recommendation, user_id: user.id)
     end
   end
 end

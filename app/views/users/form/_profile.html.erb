@@ -1,0 +1,19 @@
+<h2 class='subtitle is-4 has-text-grey'>Profile</h2>
+<div class="field columns">
+  <div class="control column">
+    <%= form.label :name, class: 'label' %>
+    <%= form.text_field :name, class: 'control input' %>
+  </div>
+
+  <div class="control column">
+    <%= form.label :email, class: 'label' %>
+    <%= form.text_field :email, class: 'control input' %>
+  </div>
+
+  <div class="control column">
+    <%= form.label :dob, 'Birthday', class: 'label' %>
+    <%= form.date_select :dob, {start_year: 1970, end_year: 2000 }, class: 'control' %>
+
+  </div>
+</div>
+

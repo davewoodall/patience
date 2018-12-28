@@ -1,0 +1,16 @@
+<% if model.errors.any? %>
+<section class="hero is-danger is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="error_explanation">
+        <h2><%= pluralize(model.errors.count, "error") %> prohibited this model from being saved:</h2>
+        <ul>
+          <% model.errors.full_messages.each do |message| %>
+          <li class=''><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

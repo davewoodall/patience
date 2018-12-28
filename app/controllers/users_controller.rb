@@ -8,24 +8,24 @@ class UsersController < ApplicationController
 
   def show
     @recommendation = @user.recommendations.last
-    @recommendation_image = recommendation_image
+    @recommendation_image = recommendation_image ? recommendation_image : nil
     @identification = @user.identifications.last
-    @identification_image = identification_image
+    @identification_image = identification_image ? identification_image : nil
     respond_to :html, :json
   end
 
   def new
     @user = User.new
+    # @identification = Identification.new
   end
 
   def edit
+    @identification = @user.identifications.last
   end
 
   def create
-
     user = user_params.except(:recommendation_attributes, :identification_attributes)
     @user = User.new(user)
-
     if @user.save
       if user_params.dig(:recommendation_attributes)
         @user.recommendations.create(user_params[:recommendation_attributes])
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         @user.identifications.create(user_params[:identification_attributes])
       end
       respond_to do |format|
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to user_path(@user), notice: 'User was successfully created.' }
         format.json { render 'create', status: :created }
       end
     else
@@ -46,7 +46,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+        user = user_params.except(:recommendation_attributes, :identification_attributes)
+
+    if @user.update(user)
+      if user_params.dig(:recommendation_attributes)
+        @user.recommendations.create(user_params[:recommendation_attributes])
+      end
+      if user_params.dig(:identification_attributes)
+        @user.identifications.create(user_params[:identification_attributes])
+      end
+
       respond_to do |format|
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json
@@ -77,10 +86,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :name, :email, :dob,
       recommendation_attributes: [
-        :number, :issuer, :state, :expiration, :id
+        :number, :issuer, :state, :expiration, :id, :image_upload
       ],
       identification_attributes: [
-        :number, :state, :expiration, :id
+        :number, :state, :expiration, :id, :image_upload
       ])
   end
 

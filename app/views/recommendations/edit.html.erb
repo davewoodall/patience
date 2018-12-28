@@ -1,6 +1,8 @@
-<h1>Editing Recommendation</h1>
-
-<%= render 'form', recommendation: @recommendation %>
-
-<%= link_to 'Show', @recommendation %> |
-<%= link_to 'Back', recommendations_path %>
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class='subtitle is-4 has-text-grey'>Edit Recommendation</h2>
+      <%= render 'form', recommendation: @recommendation %>
+    </div>
+  </div>
+</section>

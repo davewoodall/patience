@@ -1,0 +1,27 @@
+<% if @identification %>
+<div class="image_upload">
+  <% if @identification_image.attached? %>
+    <%= image_tag @identification_image, width: 200 %>
+  <% else %>
+    <%= link_to 'add identifcation image', edit_identification_user_path %>
+  <% end %>
+</div>
+
+<p>
+  <strong>Number:</strong>
+  <%= @identification.number %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @identification.state %>
+</p>
+
+<p>
+  <strong>Expiration:</strong>
+  <%= @identification.expiration %>
+</p>
+  <%= link_to "Edit", edit_identification_user_path %>
+<% else %>
+  <%= link_to "Add State info", new_identification_user_path, class: 'button' %>
+<% end %>

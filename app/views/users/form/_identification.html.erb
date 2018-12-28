@@ -1,0 +1,25 @@
+<%= form.fields_for :identification_attributes, @identification do |form| %>
+
+<h2 class='subtitle is-4 has-text-grey'>State Identification Details</h2>
+<div class="field columns">
+  <div class="control column">
+    <%= form.label :number, class: 'label' %>
+    <%= form.text_field :number, class: 'control input' %>
+  </div>
+
+  <div class="control column">
+    <%= form.label :state, class: 'label' %>
+    <%= form.text_field :state, class: 'control input' %>
+  </div>
+
+  <div class="control column">
+    <%= form.label :expiration, class: 'label' %>
+    <%= form.date_select :expiration, {}, class: 'control' %>
+  </div>
+
+  <div class="control column">
+    <%= form.label :proof, class: 'label' %>
+    <%= form.file_field :image_upload %>
+  </div>
+</div>
+<% end %>

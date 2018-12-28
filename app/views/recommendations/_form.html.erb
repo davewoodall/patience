@@ -1,41 +1,45 @@
-<%= form_with(model: [@user, @recommendation], url: user_recommendations_path, local: true) do |form| %>
-  <% if recommendation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
+<%= form_with(model: [@user, @recommendation], url: recommendation_user_path, local: true) do |form| %>
+<%= render 'shared/errors', model: recommendation %>
 
-      <ul>
-      <% recommendation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
+<div class="field columns">
+  <div class="control column is-4">
+    <%= form.label :number, class: 'label' %>
+    <%= form.text_field :number, class: 'control input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :issuer %>
-    <%= form.text_field :issuer %>
+  <div class="control column is-4">
+
+    <%= form.label :issuer, class: 'label' %>
+    <%= form.text_field :issuer, class: 'control input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+  <div class="field column is-2">
+    <%= form.label :state, class: 'label' %>
+    <%= form.text_field :state,class: 'control input' %>
+  </div>
+</div>
+
+<div class="field columns">
+  <div class="field column">
+    <%= form.label :expiration, class: 'label' %>
+    <%= form.date_select :expiration,class: 'control input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :expiration %>
-    <%= form.date_select :expiration %>
-  </div>
-
-  <div class="field">
+  <div class="field column">
+    <%= form.label 'proof', class: 'label' %>
     <%= form.file_field :image_upload %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
+
+<div class="field">
+  <% if action_name == 'edit' %>
+  <%= link_to 'Cancel', user_path(@user), class: 'button is-warning' %>
+  <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  <%= form.submit 'Save', class:'button is-primary' %>
+  <% else %>
+  <%= link_to 'Cancel', user_path(@user), class: 'button is-warning' %>
+  <%= form.submit 'Save', class:'button is-primary' %>
+  <% end %>
+</div>
 <% end %>

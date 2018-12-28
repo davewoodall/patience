@@ -12,6 +12,8 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'jbuilder', '~> 2.8'
+gem "bulma-rails", "~> 0.7.2"
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -34,4 +36,5 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
   gem 'terminal-notifier-guard'
+  gem 'xray-rails'
 end

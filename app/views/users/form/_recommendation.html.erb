@@ -1,0 +1,34 @@
+<div class="section">
+  <h2 class='title is-4'>Medical Recommendation Details</h2>
+  <div class="field is-grouped">
+    <%= form.fields_for :recommendation_attributes do |form| %>
+
+    <div class="control">
+      <%= form.label :number, class: 'label' %>
+      <%= form.text_field :number, class: 'control' %>
+    </div>
+
+    <div class="control">
+      <%= form.label :issuer, class: 'label' %>
+      <%= form.text_field :issuer, class: 'control' %>
+    </div>
+
+    <div class="control">
+      <%= form.label :state, class: 'label' %>
+      <%= form.text_field :state, class: 'control' %>
+    </div>
+  </div>
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.label :expiration, class: 'label' %>
+      <%= form.date_select :expiration,{}, class: 'control' %>
+    </div>
+
+    <div class="control">
+      <%= form.label :proof, class: 'label' %>
+      <%= form.file_field :image_upload %>
+    </div>
+
+    <% end %>
+  </div>
+</div>

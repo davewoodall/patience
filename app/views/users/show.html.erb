@@ -1,32 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container is-fluid">
+  <div class="section">
 
-  <div class="image_upload">
-    <% if @recommendation_image %>
-      <%= image_tag @recommendation_image, width: 200 %>
-    <% end %>
+  <div class="columns">
+    <%= render 'users/show/profile' %>
   </div>
-
-<div class="image_upload">
-  <% if @identification_image %>
-    <%= image_tag @identification_image, width: 200 %>
-  <% end %>
+  <div class="columns">
+    <div class="column">
+      <%= render 'users/show/identification' %>
+    </div>
+    <div class="column">
+      <%= render 'users/show/recommendation' %>
+    </div>
+  </div>
+  </div>
 </div>
-
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @user.dob %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= render 'users/show/nav' %>

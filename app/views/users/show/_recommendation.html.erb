@@ -1,0 +1,32 @@
+<% if @recommendation %>
+<div class="image_upload">
+  <% if @recommendation_image.attached? %>
+    <%= image_tag @recommendation_image, width: 200 %>
+  <% else %>
+    <%= link_to 'add recommendation image', edit_recommendation_user_path %>
+  <% end %>
+</div>
+
+<p>
+  <strong>Number:</strong>
+  <%= @recommendation.number %>
+</p>
+
+<p>
+  <strong>Issuer:</strong>
+  <%= @recommendation.issuer %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @recommendation.state %>
+</p>
+
+<p>
+  <strong>Expiration:</strong>
+  <%= @recommendation.expiration %>
+</p>
+<%= link_to "Edit", edit_recommendation_user_path %>
+<% else %>
+  <%= link_to "Add Recommendation", new_recommendation_user_path, class: 'button' %>
+<% end %>

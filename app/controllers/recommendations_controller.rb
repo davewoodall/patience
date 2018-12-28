@@ -17,7 +17,7 @@ class RecommendationsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @recommendation = Recommendation.new
   end
 
@@ -42,7 +42,7 @@ class RecommendationsController < ApplicationController
   def update
     if @recommendation.update(recommendation_params)
       respond_to do |format|
-        format.html { redirect_to @recommendation, notice: 'Recommendation was successfully updated.' }
+        format.html { redirect_to user_path(@recommendation.user_id), notice: 'Recommendation was successfully updated.' }
         format.json { render json: @recommendation, status: :ok }
       end
     else
@@ -56,7 +56,7 @@ class RecommendationsController < ApplicationController
   def destroy
     @recommendation.destroy
     respond_to do |format|
-      format.html { redirect_to recommendations_url, notice: 'Recommendation was successfully destroyed.' }
+      format.html { redirect_to user_path(@recommendation.user_id), notice: 'Recommendation was successfully destroyed.' }
       format.json { render json: :nothing, status: 204 }
     end
   end

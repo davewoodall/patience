@@ -1,0 +1,14 @@
+<section class="profile">
+  <h1 class="title">
+    <%= @user.name %>
+  </h1>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  <p>
+    <strong>Dob:</strong>
+    <%= @user.dob %>
+  </p>
+<%= link_to 'Edit', edit_user_path(@user) %>
+</section>

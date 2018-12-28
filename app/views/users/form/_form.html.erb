@@ -1,0 +1,5 @@
+<%= form_with(model: user, local: true) do |form| %>
+<%= render 'shared/errors', model: user %>
+<%= render 'users/form/profile', form: form %>
+<%= render 'users/form/nav', form: form, user: user %>
+<% end %>

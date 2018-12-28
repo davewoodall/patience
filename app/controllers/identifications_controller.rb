@@ -17,7 +17,7 @@ class IdentificationsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @identification = Identification.new
   end
 
@@ -42,7 +42,7 @@ class IdentificationsController < ApplicationController
   def update
     if @identification.update(identification_params)
       respond_to do |format|
-        format.html { redirect_to @identification, notice: 'Identification was successfully updated.' }
+        format.html { redirect_to  user_path(@identification.user_id), notice: 'Identification was successfully updated.' }
         format.json { render json: @identification, status: :ok }
       end
     else
@@ -56,7 +56,7 @@ class IdentificationsController < ApplicationController
   def destroy
     @identification.destroy
     respond_to do |format|
-      format.html { redirect_to identifications_url, notice: 'Identification was successfully destroyed.' }
+      format.html { redirect_to user_path(@identification.user_id), notice: 'Identification was successfully destroyed.' }
       format.json { render json: :nothing, status: 204 }
     end
   end
